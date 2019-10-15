@@ -50,7 +50,8 @@ const errorHandler = (error: { response: Response }): Response => {
  */
 const request = extend({
   errorHandler, // 默认错误处理
-  credentials: 'include', // 默认请求是否带上cookie
+  // 设置以后会导致浏览器不允许Access-Control-Allow-Origin是*。
+  // credentials: 'include', // 默认请求是否带上cookie
 });
 
 export default request;

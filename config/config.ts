@@ -104,11 +104,11 @@ export default {
         {
           path: '/',
           component: '../layouts/BasicLayout',
-          authority: ['admin', 'user'],
+          // authority: ['user'],
           routes: [
             {
               path: '/',
-              redirect: '/welcome',
+              redirect: '/user/login',
             },
             {
               path: '/welcome',

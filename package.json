@@ -12,6 +12,7 @@
     "gh-pages": "cp CNAME ./dist/ && gh-pages -d dist",
     "i18n-remove": "pro i18n-remove --locale=zh-CN --write",
     "lint": "npm run lint:js && npm run lint:style && npm run lint:prettier",
+    "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .tsx src/",
     "lint-staged": "lint-staged",
     "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx ",
     "lint:fix": "eslint --fix --cache --ext .js,.jsx,.ts,.tsx --format=pretty ./src && npm run lint:style",
@@ -26,20 +27,32 @@
     "test:component": "umi test ./src/components",
     "ui": "umi ui"
   },
-  "husky": { "hooks": { "pre-commit": "npm run lint-staged" } },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint-staged"
+    }
+  },
   "lint-staged": {
     "**/*.less": "stylelint --syntax less",
-    "**/*.{js,jsx,tsx,ts,less,md,json}": ["prettier --write", "git add"],
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write",
+      "git add"
+    ],
     "**/*.{js,jsx}": "npm run lint-staged:js",
     "**/*.{js,ts,tsx}": "npm run lint-staged:js"
   },
-  "browserslist": ["> 1%", "last 2 versions", "not ie <= 10"],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ],
   "dependencies": {
     "@ant-design/pro-layout": "^4.5.16",
     "@antv/data-set": "^0.10.2",
     "antd": "^3.23.6",
     "classnames": "^2.2.6",
     "dva": "^2.4.1",
+    "jsencrypt": "^3.0.0-rc.1",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "omit.js": "^1.0.2",
@@ -94,8 +107,12 @@
     "umi-types": "^0.5.0",
     "webpack-theme-color-replacer": "^1.2.15"
   },
-  "optionalDependencies": { "puppeteer": "^1.17.0" },
-  "engines": { "node": ">=10.0.0" },
+  "optionalDependencies": {
+    "puppeteer": "^1.17.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "checkFiles": [
     "src/**/*.js*",
     "src/**/*.ts*",
